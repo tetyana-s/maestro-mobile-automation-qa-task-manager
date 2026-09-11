@@ -41,6 +41,8 @@ jobs:
         run: mkdir -p reports/smoke reports/regression
 
       - name: Run ${{ matrix.suite }} tests and build reports
+        id: emulator_tests
+        continue-on-error: true
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 34
@@ -72,6 +74,28 @@ jobs:
               attempt=$((attempt + 1))
               echo "${{ matrix.suite }} failed; retrying (attempt $attempt/$max_attempts)"
             done
+
+      - name: Evaluate ${{ matrix.suite }} results
+        if: always()
+        run: |
+          node --input-type=module - <<'NODE'
+          import { existsSync, readFileSync } from 'node:fs';
+
+          const suite = '${{ matrix.suite }}';
+          const resultsPath = `reports/${suite}/results.json`;
+          if (!existsSync(resultsPath)) {
+            console.error(`No results found for ${suite}`);
+            process.exit(1);
+          }
+
+          const results = JSON.parse(readFileSync(resultsPath, 'utf8'));
+          const failed = results.filter((result) => result.status !== 'PASS');
+          if (failed.length) {
+            console.error(`${failed.length} ${suite} test(s) failed`);
+            process.exit(1);
+          }
+          console.log(`${results.length} ${suite} test(s) passed`);
+          NODE
 
       - name: Upload Maestro reports
         if: always()
