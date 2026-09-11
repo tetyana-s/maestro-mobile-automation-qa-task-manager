@@ -1,0 +1,13 @@
+appId: com.qataskmanager.app
+tags:
+    - smoke
+---
+- runFlow: ../flows/login.yaml
+- tapOn:
+    id: task-item-1
+- tapOn:
+    id: complete-task-button
+- assertNotVisible:
+    id: complete-task-button
+- assertVisible:
+    id: task-detail-status

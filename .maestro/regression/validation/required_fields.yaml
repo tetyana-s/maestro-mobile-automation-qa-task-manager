@@ -1,0 +1,12 @@
+appId: com.qataskmanager.app
+tags:
+    - regression
+---
+- runFlow: ../../flows/login.yaml
+- tapOn:
+    id: add-task-button
+- tapOn:
+    id: save-task-button
+- assertVisible:
+    id: task-form-error
+- assertVisible: Task title is required.

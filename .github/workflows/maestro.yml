@@ -1,0 +1,65 @@
+name: Maestro Mobile Tests
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  maestro:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        suite: [smoke, regression]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Maestro
+        run: |
+          curl -Ls "https://get.maestro.mobile.dev" | bash
+          echo "$HOME/.maestro/bin" >> "$GITHUB_PATH"
+
+      - name: Run ${{ matrix.suite }} tests and build reports
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 35
+          arch: x86_64
+          profile: Pixel_2
+          script: |
+            npx expo run:android
+            attempt=1
+            max_attempts=3
+            until node scripts/run-maestro-report.mjs "${{ matrix.suite }}"; do
+              if [ "$attempt" -ge "$max_attempts" ]; then
+                echo "${{ matrix.suite }} failed after $max_attempts attempts"
+                exit 1
+              fi
+              attempt=$((attempt + 1))
+              echo "${{ matrix.suite }} failed; retrying (attempt $attempt/$max_attempts)"
+            done
+
+      - name: Upload Maestro reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: maestro-${{ matrix.suite }}-reports
+          path: reports/${{ matrix.suite }}/
+          if-no-files-found: warn

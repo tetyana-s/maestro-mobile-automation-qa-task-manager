@@ -1,0 +1,13 @@
+appId: com.qataskmanager.app
+tags:
+    - regression
+---
+- runFlow: ../../flows/login.yaml
+- tapOn:
+    id: settings-button
+- assertVisible:
+    id: settings-screen
+- tapOn:
+    id: dark-mode-toggle
+- assertChecked:
+    id: dark-mode-toggle

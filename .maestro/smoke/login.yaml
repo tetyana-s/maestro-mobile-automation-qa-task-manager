@@ -1,0 +1,5 @@
+appId: com.qataskmanager.app
+tags:
+    - smoke
+---
+- runFlow: ../flows/login.yaml

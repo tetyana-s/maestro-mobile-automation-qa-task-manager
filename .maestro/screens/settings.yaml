@@ -1,0 +1,8 @@
+appId: com.qataskmanager.app
+---
+- assertVisible:
+    id: settings-screen
+- assertVisible:
+    id: dark-mode-toggle
+- assertVisible:
+    id: settings-logout-button

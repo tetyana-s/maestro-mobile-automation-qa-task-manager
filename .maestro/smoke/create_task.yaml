@@ -1,0 +1,7 @@
+appId: com.qataskmanager.app
+tags:
+  - smoke
+---
+- runFlow: ../flows/login.yaml
+- runFlow: ../flows/create_task.yaml
+- assertVisible: ${TASK_TITLE}

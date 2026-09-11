@@ -1,0 +1,11 @@
+appId: com.qataskmanager.app
+tags:
+    - regression
+---
+- runFlow: ../../flows/login.yaml
+- tapOn:
+    id: add-task-button
+- tapOn:
+    id: cancel-task-button
+- assertVisible:
+    id: dashboard-screen

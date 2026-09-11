@@ -1,0 +1,14 @@
+appId: com.qataskmanager.app
+tags:
+    - regression
+---
+- runFlow: ../../flows/login.yaml
+- scrollUntilVisible:
+        element:
+            id: filter-high
+        direction: RIGHT
+- tapOn:
+    id: filter-high
+- assertVisible: ${EXISTING_TASK_TITLE}
+- assertVisible: ${CHECKOUT_TASK_TITLE}
+- assertNotVisible: ${OFFLINE_TASK_TITLE}

@@ -1,0 +1,4 @@
+QA_EMAIL: qa@example.com
+QA_PASSWORD: Password123
+INVALID_EMAIL: invalid@example.com
+INVALID_PASSWORD: WrongPassword

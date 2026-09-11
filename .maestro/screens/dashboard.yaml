@@ -1,0 +1,10 @@
+appId: com.qataskmanager.app
+---
+- assertVisible:
+    id: dashboard-screen
+- assertVisible:
+    id: task-search
+- assertVisible:
+    id: add-task-button
+- assertVisible:
+    id: settings-button

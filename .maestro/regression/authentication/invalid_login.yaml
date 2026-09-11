@@ -1,0 +1,17 @@
+appId: com.qataskmanager.app
+tags:
+    - regression
+---
+- runFlow: ../../flows/reset_app.yaml
+- tapOn:
+    id: login-email
+- inputText: ${QA_EMAIL}
+- tapOn:
+    id: login-password
+- inputText: ${INVALID_PASSWORD}
+- hideKeyboard
+- tapOn:
+    id: login-button
+- assertVisible:
+    id: login-error
+- assertVisible: Invalid email or password.

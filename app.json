@@ -1,15 +1,17 @@
 {
   "expo": {
-    "name": "Maestro",
-    "slug": "Maestro",
+    "name": "QA Task Manager",
+    "slug": "qa-task-manager",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "ios": {
+      "bundleIdentifier": "com.qataskmanager.app",
       "supportsTablet": true
     },
     "android": {
+      "package": "com.qataskmanager.app",
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
         "foregroundImage": "./assets/android-icon-foreground.png",

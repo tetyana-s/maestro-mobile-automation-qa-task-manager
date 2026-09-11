@@ -1,0 +1,16 @@
+appId: com.qataskmanager.app
+clearState: true
+---
+- launchApp
+- runFlow: ../screens/login.yaml
+- tapOn:
+    id: login-email
+- inputText: ${QA_EMAIL}
+- tapOn:
+    id: login-password
+- inputText: ${QA_PASSWORD}
+- hideKeyboard
+- tapOn:
+    id: login-button
+- runFlow: ../screens/dashboard.yaml
+- runFlow: ../screens/task_list.yaml

@@ -1,0 +1,17 @@
+appId: com.qataskmanager.app
+tags:
+    - regression
+---
+- runFlow: ../../flows/login.yaml
+- tapOn:
+    id: task-item-1
+- tapOn:
+    id: edit-task-button
+- tapOn:
+    id: task-title-input
+- eraseText
+- inputText: ${EDITED_TASK_TITLE}
+- hideKeyboard
+- tapOn:
+    id: save-task-button
+- assertVisible: ${EDITED_TASK_TITLE}

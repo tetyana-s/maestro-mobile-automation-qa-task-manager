@@ -1,0 +1,6 @@
+appId: com.qataskmanager.app
+tags:
+  - regression
+---
+- runFlow: ../../flows/login.yaml
+- runFlow: ../../flows/logout.yaml

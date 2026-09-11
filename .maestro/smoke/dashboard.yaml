@@ -1,0 +1,12 @@
+appId: com.qataskmanager.app
+tags:
+    - smoke
+---
+- runFlow: ../flows/login.yaml
+- assertVisible: Total tasks
+- assertVisible: Completed
+- assertVisible: Pending
+- assertVisible:
+    id: task-search
+- assertVisible:
+    id: add-task-button

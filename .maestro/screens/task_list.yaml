@@ -1,0 +1,7 @@
+appId: com.qataskmanager.app
+---
+- assertVisible: Test tasks
+- assertVisible:
+    id: task-search
+- assertVisible:
+    id: add-task-button

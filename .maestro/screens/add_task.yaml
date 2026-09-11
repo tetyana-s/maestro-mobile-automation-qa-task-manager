@@ -1,0 +1,13 @@
+appId: com.qataskmanager.app
+---
+- assertVisible: Add test task
+- assertVisible:
+    id: task-title-input
+- assertVisible:
+    id: task-description-input
+- assertVisible:
+    id: task-due-date-input
+- assertVisible:
+    id: save-task-button
+- assertVisible:
+    id: cancel-task-button

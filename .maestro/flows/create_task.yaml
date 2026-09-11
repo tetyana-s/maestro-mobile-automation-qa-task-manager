@@ -1,0 +1,21 @@
+appId: com.qataskmanager.app
+---
+- tapOn:
+    id: add-task-button
+- waitForAnimationToEnd
+- runFlow: ../screens/add_task.yaml
+- tapOn:
+    id: task-title-input
+- inputText: ${TASK_TITLE}
+- tapOn:
+    id: task-description-input
+- inputText: ${TASK_DESCRIPTION}
+- tapOn:
+    id: priority-high
+- tapOn:
+    id: task-due-date-input
+- inputText: ${TASK_DUE_DATE}
+- hideKeyboard
+- tapOn:
+    id: save-task-button
+- runFlow: ../screens/task_details.yaml

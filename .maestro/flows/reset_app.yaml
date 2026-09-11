@@ -1,0 +1,7 @@
+appId: com.qataskmanager.app
+clearState: true
+---
+- stopApp
+- clearState
+- launchApp
+- runFlow: ../screens/login.yaml

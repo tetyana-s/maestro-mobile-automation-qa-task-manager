@@ -1,0 +1,10 @@
+appId: com.qataskmanager.app
+tags:
+    - regression
+---
+- runFlow: ../../flows/login.yaml
+- tapOn:
+    id: task-search
+- inputText: ${SEARCH_TERM}
+- assertVisible: ${CHECKOUT_TASK_TITLE}
+- assertNotVisible: ${EXISTING_TASK_TITLE}

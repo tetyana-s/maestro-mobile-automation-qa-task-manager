@@ -1,0 +1,15 @@
+appId: com.qataskmanager.app
+tags:
+    - regression
+---
+- runFlow: ../../flows/login.yaml
+- tapOn:
+    id: settings-button
+- scrollUntilVisible:
+        element:
+            id: settings-logout-button
+        direction: DOWN
+- tapOn:
+    id: settings-logout-button
+- assertVisible:
+    id: login-button

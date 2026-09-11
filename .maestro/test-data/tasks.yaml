@@ -1,0 +1,12 @@
+TASK_TITLE: Verify account recovery
+TASK_DESCRIPTION: Validate reset password and expired link behavior.
+TASK_PRIORITY: High
+TASK_DUE_DATE: Sep 30, 2026
+EXISTING_TASK_TITLE: Verify login
+EXISTING_TASK_STATUS: In Progress
+CHECKOUT_TASK_TITLE: Test checkout flow
+OFFLINE_TASK_TITLE: Test offline mode
+PUSH_TASK_TITLE: Validate push notifications
+SEARCH_TERM: checkout
+NO_RESULTS_TERM: no such task
+EDITED_TASK_TITLE: Verify login regression

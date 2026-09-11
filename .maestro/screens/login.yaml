@@ -1,0 +1,10 @@
+appId: com.qataskmanager.app
+---
+- assertVisible:
+    id: login-email
+- assertVisible:
+    id: login-password
+- assertVisible:
+    id: login-button
+- assertVisible:
+    id: remember-me

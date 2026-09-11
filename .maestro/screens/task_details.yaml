@@ -1,0 +1,10 @@
+appId: com.qataskmanager.app
+---
+- assertVisible:
+    id: task-details-screen
+- assertVisible:
+    id: details-back-button
+- assertVisible:
+    id: edit-task-button
+- assertVisible:
+    id: delete-task-button

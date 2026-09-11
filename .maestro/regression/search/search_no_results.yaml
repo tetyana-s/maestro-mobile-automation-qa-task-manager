@@ -1,0 +1,9 @@
+appId: com.qataskmanager.app
+tags:
+    - regression
+---
+- runFlow: ../../flows/login.yaml
+- tapOn:
+    id: task-search
+- inputText: ${NO_RESULTS_TERM}
+- assertVisible: No matching test tasks.
