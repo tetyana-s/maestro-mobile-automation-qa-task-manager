@@ -236,12 +236,14 @@ Smoke test execution recording:
 
 ## Project structure
 
+```text
+.
 ├── App.tsx                         # React Native app and local task state
 ├── app.json                        # Expo app metadata and native IDs
 ├── package.json                    # Expo, React Native, and test scripts
 ├── scripts/
 │   ├── run-maestro.sh              # Short local smoke/regression command
-│   └── run-maestro-report.mjs       # Test runner and report generator
+│   └── run-maestro-report.mjs      # Test runner and report generator
 ├── .github/
 │   └── workflows/
 │       └── maestro.yml             # Android CI workflow and report artifacts
@@ -256,6 +258,7 @@ Smoke test execution recording:
 │   └── media/                      # README report screenshots and smoke recording
 ├── assets/                         # Expo app icons and splash assets
 └── README.md                       # Setup, test, reporting, and portfolio documentation
-
+```
 
 Generated reports are written to `reports/<suite>/` and are intentionally excluded from Git. Each report directory contains the HTML dashboard, per-test HTML reports, GitHub summary, JSON metrics, logs, and failure screenshots when applicable.
+
