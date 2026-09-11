@@ -47,7 +47,7 @@ jobs:
         with:
           api-level: 34
           arch: x86_64
-          profile: Pixel_2
+          profile: pixel_2
           target: google_apis
           force-avd-creation: true
           emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim -camera-back none
