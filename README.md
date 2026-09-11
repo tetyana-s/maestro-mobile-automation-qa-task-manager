@@ -216,6 +216,8 @@ On Linux, use `xdg-open` instead of `open`. On Windows, use `start`.
 
 The GitHub workflow at `.github/workflows/maestro.yml` runs smoke and regression suites on an Android emulator, uploads the report directories as artifacts, and publishes the summary to the Actions run. Failure screenshots are captured with ADB and linked from the dashboard.
 
+CI uses a headless Android API 34 emulator with software GPU rendering and animations disabled for stable GitHub-hosted execution.
+
 CI retries each smoke or regression suite up to three total attempts to reduce failures caused by transient emulator or device conditions. The workflow still fails after the third unsuccessful attempt.
 
 ## Test evidence

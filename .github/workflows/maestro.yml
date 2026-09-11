@@ -37,12 +37,19 @@ jobs:
           curl -Ls "https://get.maestro.mobile.dev" | bash
           echo "$HOME/.maestro/bin" >> "$GITHUB_PATH"
 
+      - name: Prepare report directories
+        run: mkdir -p reports/smoke reports/regression
+
       - name: Run ${{ matrix.suite }} tests and build reports
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 36
+          api-level: 34
           arch: x86_64
           profile: Pixel_2
+          target: google_apis
+          force-avd-creation: true
+          emulator-options: -no-window -no-audio -no-boot-anim -gpu swiftshader_indirect -no-snapshot
+          disable-animations: true
           script: |
             mkdir -p "reports/${{ matrix.suite }}"
             set +e
@@ -70,5 +77,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: maestro-${{ matrix.suite }}-reports
-          path: reports/${{ matrix.suite }}/
+          path: reports/
           if-no-files-found: warn
